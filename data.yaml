@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 5
+names: ['Seated Statue of King Amenhotep III', 'Standing Statue of King Thutmose III', 'Statue Head of King Akhenaten', 'Statue of King Sety II Holding Standards', 'Statue of Ramesses II']
+
+roboflow:
+  workspace: nouran
+  project: grand-egyptian-museum-augment-6jcog
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/nouran/grand-egyptian-museum-augment-6jcog/dataset/1
