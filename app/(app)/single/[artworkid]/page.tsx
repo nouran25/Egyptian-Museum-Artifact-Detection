@@ -1,4 +1,6 @@
-"use client"
+"use client";
+export const dynamic = "force-dynamic";
+export const revalidate = 0; // disable static generation cache
 
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -152,4 +154,5 @@ export default function Page() {
             )}
         </div>
     )
+
 }
