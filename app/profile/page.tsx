@@ -1,5 +1,5 @@
-import "../config";
 "use client";
+import "../config";
 
 import Link from "next/link";
 
@@ -14,6 +14,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
