@@ -1,6 +1,5 @@
+import "../config";
 "use client";
-export const dynamic = "force-dynamic";
-export const revalidate = 0; // disable static generation cache
 
 import Link from "next/link";
 
@@ -15,5 +14,6 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
