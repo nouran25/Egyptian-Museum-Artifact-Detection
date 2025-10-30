@@ -1,5 +1,5 @@
-import "../config";
 "use client";
+import "../config";
 
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -155,4 +155,5 @@ export default function Page() {
     )
 
 }
+
 
