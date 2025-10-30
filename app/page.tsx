@@ -1,4 +1,6 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Camera, Search } from "lucide-react";
@@ -58,3 +60,4 @@ export default function HomePage() {
     </div>
   );
 }
+
