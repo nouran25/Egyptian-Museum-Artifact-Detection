@@ -1,5 +1,6 @@
 "use client";
 export const dynamic = "force-dynamic";
+export const revalidate = 0; // disable static generation cache
 
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -19,7 +20,6 @@ export default function HomePage() {
       </p>
 
       <div className="grid md:grid-cols-2 gap-8 w-full max-w-3xl">
-        {/* 📷 Scan Artifact Card */}
         <button
           onClick={() => router.push("/scan")}
           className="flex flex-col items-center justify-center bg-white hover:bg-blue-50 border border-blue-200 rounded-2xl p-10 shadow-md hover:shadow-lg transition-all duration-200"
@@ -36,7 +36,6 @@ export default function HomePage() {
           </p>
         </button>
 
-        {/* 🔍 Search Artifact Card */}
         <button
           onClick={() => router.push("/search")}
           className="flex flex-col items-center justify-center bg-white hover:bg-blue-50 border border-blue-200 rounded-2xl p-10 shadow-md hover:shadow-lg transition-all duration-200"
@@ -60,4 +59,3 @@ export default function HomePage() {
     </div>
   );
 }
-
