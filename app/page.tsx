@@ -1,5 +1,5 @@
-import "../config";
 "use client";
+import "../config";
 
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -58,4 +58,5 @@ export default function HomePage() {
     </div>
   );
 }
+
 
