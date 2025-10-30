@@ -1,21 +1,40 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Disable static optimization entirely
+  output: 'standalone',
+  
   // Allow external images
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.metmuseum.org',
-        pathname: '/**',
       },
     ],
+    unoptimized: true,
   },
 
-  // Increase timeout for static generation
-  staticPageGenerationTimeout: 120,
+  // Webpack config
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        fs: false,
+        net: false,
+        tls: false,
+      };
+    }
+    return config;
+  },
+
+  // Increase timeout
+  staticPageGenerationTimeout: 180,
   
-  // Use standalone output for better compatibility
-  output: 'standalone',
+  // Experimental features
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb',
+    },
+  },
 };
 
 module.exports = nextConfig;
