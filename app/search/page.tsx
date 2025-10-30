@@ -48,7 +48,7 @@ export default function SearchPage() {
 
       const topIDs = searchData.objectIDs.slice(0, 5);
       const artworks = await Promise.all(
-        topIDs.map(async (id) => {
+        topIDs.map(async (id: number) => {
           try {
             const res = await fetch(
               `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`
@@ -306,4 +306,5 @@ export default function SearchPage() {
       `}</style>
     </div>
   );
+
 }
