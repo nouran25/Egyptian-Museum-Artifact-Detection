@@ -1,6 +1,5 @@
+import "../config";
 "use client";
-export const dynamic = "force-dynamic";
-export const revalidate = 0; // disable static generation cache
 
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -59,3 +58,4 @@ export default function HomePage() {
     </div>
   );
 }
+
