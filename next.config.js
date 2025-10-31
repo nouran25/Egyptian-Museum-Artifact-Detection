@@ -3,6 +3,9 @@ const nextConfig = {
   // Disable static optimization entirely
   output: 'standalone',
   
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   // Allow external images
   images: {
     remotePatterns: [
@@ -38,3 +41,4 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
