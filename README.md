@@ -20,7 +20,7 @@
 
 ## 📖 Overview
 
-**Egyptian Museum Artifact Detection** is an innovative AI-powered application that revolutionizes museum experiences by combining computer vision, natural language processing, and interactive learning. Built for the **Graeco-Roman Museum in Alexandria**, this platform enables visitors to instantly identify and learn about 84 iconic Egyptian artifacts through smartphone camera scanning or text search.
+**Egyptian Museum Artifact Detection** is an innovative AI-powered application that revolutionizes museum experiences by combining computer vision, natural language processing, and interactive learning. Built for the **Egyptian Museums**, this platform enables visitors to instantly identify and learn about 84 iconic Egyptian artifacts through smartphone camera scanning or text search.
 
 ### 🎯 Project Goals
 
