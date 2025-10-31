@@ -75,7 +75,7 @@
 
 🌐 **[Try the Live Application](https://your-demo-url.vercel.app)**
 
-📹 **[Watch Video Demonstration](https://youtube.com/your-video)**
+📹 **![Watch Video Demonstration](./assets/demo.gif)**
 
 ---
 
