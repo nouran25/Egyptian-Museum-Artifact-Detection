@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Project Banner](./assets/banner.png)
+![Project Banner](./assets/banner.jpg)
 
 **AI-Powered Interactive Museum Companion for Egyptian Cultural Heritage**
 
