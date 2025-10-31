@@ -2,184 +2,263 @@
 
 import { useRouter } from "next/navigation";
 import React from "react";
-import { Camera, Search, Sparkles, MapPin } from "lucide-react";
+import { Camera, Search, Scroll, Eye } from "lucide-react";
 
 export default function HomePage() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-amber-200/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-200/20 rounded-full blur-3xl"></div>
+    <div className="min-h-screen bg-gradient-to-b from-amber-900 via-yellow-800 to-amber-900 relative overflow-hidden">
+      {/* Ancient Egyptian Patterns Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(218, 165, 32, 0.3) 50px, rgba(218, 165, 32, 0.3) 51px),
+                           repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(218, 165, 32, 0.3) 50px, rgba(218, 165, 32, 0.3) 51px)`
+        }}></div>
+      </div>
+
+      {/* Papyrus Texture Overlay */}
+      <div className="absolute inset-0 opacity-5" style={{
+        backgroundImage: 'url("data:image/svg+xml,%3Csvg width="100" height="100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.3"/%3E%3C/svg%3E")'
+      }}></div>
+
+      {/* Decorative Hieroglyphic-style Elements */}
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/30 to-transparent border-b-4 border-yellow-600/50">
+        <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-6">
+          <div className="flex space-x-4 text-yellow-500/40">
+            {['𓂀', '𓃭', '𓅓', '𓆣', '𓇋'].map((symbol, i) => (
+              <span key={i} className="text-4xl font-serif">{symbol}</span>
+            ))}
+          </div>
+          <div className="flex space-x-4 text-yellow-500/40">
+            {['𓊪', '𓋴', '𓌙', '𓍯', '𓎡'].map((symbol, i) => (
+              <span key={i} className="text-4xl font-serif">{symbol}</span>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="relative z-10 min-h-screen flex flex-col">
-        {/* Navigation Bar */}
-        <nav className="px-6 py-4 backdrop-blur-sm bg-white/70 border-b border-amber-200/50">
+        {/* Navigation Bar with Ancient Egyptian Style */}
+        <nav className="mt-32 px-6 py-6 backdrop-blur-sm bg-black/40 border-y-2 border-yellow-600/50">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-amber-600 to-orange-600 rounded-lg flex items-center justify-center shadow-lg">
-                <Sparkles className="w-6 h-6 text-white" />
+            <div className="flex items-center space-x-4">
+              {/* Eye of Horus Logo */}
+              <div className="relative w-14 h-14">
+                <div className="absolute inset-0 bg-yellow-600 rounded-full animate-pulse opacity-30"></div>
+                <div className="relative w-14 h-14 bg-gradient-to-br from-yellow-500 via-yellow-600 to-amber-700 rounded-full flex items-center justify-center border-2 border-yellow-400 shadow-lg shadow-yellow-600/50">
+                  <Eye className="w-7 h-7 text-amber-950" />
+                </div>
               </div>
               <div>
-                <h2 className="text-xl font-bold bg-gradient-to-r from-amber-800 to-orange-700 bg-clip-text text-transparent">
-                  Egyptian Museum
+                <h2 className="text-2xl font-bold text-yellow-400 tracking-wider" style={{ fontFamily: 'Papyrus, fantasy' }}>
+                  EGYPTIAN MUSEUM
                 </h2>
-                <p className="text-xs text-amber-700">AI Guide</p>
+                <p className="text-xs text-yellow-600 tracking-widest">AI ARTIFACT GUIDE</p>
               </div>
             </div>
-            <div className="flex items-center space-x-2 text-sm text-amber-800">
-              <MapPin className="w-4 h-4" />
-              <span>Cairo, Egypt</span>
+            <div className="flex items-center space-x-3 text-sm text-yellow-500 bg-black/30 px-4 py-2 rounded-full border border-yellow-600/30">
+              <Scroll className="w-4 h-4" />
+              <span className="tracking-wider">ANCIENT KNOWLEDGE</span>
             </div>
           </div>
         </nav>
 
         {/* Main Content */}
-        <main className="flex-1 flex flex-col items-center justify-center px-6 py-12">
-          {/* Hero Section */}
-          <div className="text-center mb-16 max-w-3xl">
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-300 rounded-full px-4 py-2 mb-6">
-              <Sparkles className="w-4 h-4 text-amber-700" />
-              <span className="text-sm font-medium text-amber-800">
-                Powered by AI Technology
-              </span>
+        <main className="flex-1 flex flex-col items-center justify-center px-6 py-16">
+          {/* Hero Section with Papyrus Style */}
+          <div className="text-center mb-20 max-w-4xl">
+            {/* Decorative Top Border */}
+            <div className="flex items-center justify-center mb-8">
+              <div className="h-px w-32 bg-gradient-to-r from-transparent to-yellow-600"></div>
+              <div className="mx-4 flex items-center space-x-3 bg-yellow-600/20 border-2 border-yellow-600/50 rounded-full px-6 py-2 backdrop-blur-sm">
+                <Eye className="w-5 h-5 text-yellow-500" />
+                <span className="text-sm font-semibold text-yellow-400 tracking-widest">
+                  POWERED BY MODERN AI
+                </span>
+              </div>
+              <div className="h-px w-32 bg-gradient-to-l from-transparent to-yellow-600"></div>
             </div>
             
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-amber-900 via-orange-800 to-amber-900 bg-clip-text text-transparent">
-                Discover Ancient
+            <h1 className="text-7xl md:text-8xl font-bold mb-8 leading-tight" style={{ fontFamily: 'Papyrus, fantasy' }}>
+              <span className="text-yellow-400 drop-shadow-[0_0_30px_rgba(234,179,8,0.5)]">
+                UNLOCK THE
               </span>
               <br />
-              <span className="bg-gradient-to-r from-orange-700 to-amber-700 bg-clip-text text-transparent">
-                Egyptian Treasures
+              <span className="text-yellow-500 drop-shadow-[0_0_30px_rgba(234,179,8,0.5)]">
+                MYSTERIES
+              </span>
+              <br />
+              <span className="text-amber-400 drop-shadow-[0_0_30px_rgba(234,179,8,0.5)]">
+                OF EGYPT
               </span>
             </h1>
             
-            <p className="text-xl text-amber-900/80 leading-relaxed max-w-2xl mx-auto">
-              Unlock the mysteries of ancient Egypt. Use AI to identify artifacts, 
-              explore their stories, and journey through millennia of history.
+            <p className="text-xl text-yellow-300/90 leading-relaxed max-w-3xl mx-auto mb-4 tracking-wide">
+              Journey through 5,000 years of history. Discover pharaohs, decode hieroglyphs, 
+              and explore the treasures of ancient Egypt with the power of artificial intelligence.
             </p>
+            
+            <div className="flex items-center justify-center space-x-2 text-yellow-600">
+              <div className="w-2 h-2 bg-yellow-600 rotate-45"></div>
+              <div className="w-2 h-2 bg-yellow-600 rotate-45"></div>
+              <div className="w-2 h-2 bg-yellow-600 rotate-45"></div>
+            </div>
           </div>
 
-          {/* Action Cards */}
-          <div className="grid md:grid-cols-2 gap-8 w-full max-w-5xl mb-12">
-            {/* Scan Card */}
+          {/* Action Cards - Papyrus Style */}
+          <div className="grid md:grid-cols-2 gap-10 w-full max-w-6xl mb-16">
+            {/* Scan Card - Temple Door Style */}
             <button
               onClick={() => router.push("/scan")}
-              className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-amber-200/50 overflow-hidden"
+              className="group relative bg-gradient-to-b from-amber-100 to-yellow-50 rounded-lg p-10 shadow-2xl hover:shadow-yellow-600/50 transition-all duration-500 border-4 border-yellow-700 overflow-hidden"
+              style={{
+                backgroundImage: 'linear-gradient(to bottom, rgba(251, 191, 36, 0.1), rgba(253, 224, 71, 0.1)), url("data:image/svg+xml,%3Csvg width="100" height="100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.05"/%3E%3C/svg%3E")'
+              }}
             >
-              {/* Gradient Overlay on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/0 to-orange-500/0 group-hover:from-amber-500/5 group-hover:to-orange-500/5 transition-all duration-500"></div>
-              
+              {/* Top Decorative Border */}
+              <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700 flex items-center justify-around">
+                {[...Array(12)].map((_, i) => (
+                  <div key={i} className="w-1 h-2 bg-amber-900"></div>
+                ))}
+              </div>
+
+              {/* Side Hieroglyphic Decorations */}
+              <div className="absolute left-2 top-20 bottom-20 w-8 flex flex-col justify-around text-yellow-700/30 text-2xl">
+                <span>𓂀</span>
+                <span>𓃭</span>
+                <span>𓅓</span>
+              </div>
+              <div className="absolute right-2 top-20 bottom-20 w-8 flex flex-col justify-around text-yellow-700/30 text-2xl">
+                <span>𓆣</span>
+                <span>𓇋</span>
+                <span>𓊪</span>
+              </div>
+
               <div className="relative z-10">
-                {/* Icon Container */}
-                <div className="mb-6 flex justify-center">
+                {/* Ankh Symbol Icon */}
+                <div className="mb-8 flex justify-center">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl blur-lg opacity-50 group-hover:opacity-70 transition-opacity"></div>
-                    <div className="relative bg-gradient-to-br from-amber-500 to-orange-600 w-20 h-20 rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
-                      <Camera className="w-10 h-10 text-white" strokeWidth={2.5} />
+                    <div className="absolute inset-0 bg-yellow-600 rounded-full blur-xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                    <div className="relative bg-gradient-to-br from-yellow-600 via-amber-600 to-yellow-700 w-24 h-24 rounded-full flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl border-4 border-yellow-500">
+                      <Camera className="w-12 h-12 text-amber-50" strokeWidth={2.5} />
                     </div>
                   </div>
                 </div>
 
-                {/* Content */}
-                <h2 className="text-3xl font-bold text-amber-900 mb-3 group-hover:text-orange-800 transition-colors">
-                  Scan Artifact
+                <h2 className="text-4xl font-bold text-amber-900 mb-4 tracking-wide" style={{ fontFamily: 'Papyrus, fantasy' }}>
+                  SCAN ARTIFACT
                 </h2>
-                <p className="text-amber-800/80 text-lg leading-relaxed mb-4">
-                  Capture or upload an image of any artifact to instantly identify it and explore its rich cultural heritage.
+                <p className="text-amber-800 text-lg leading-relaxed mb-6 px-4">
+                  Point your device at any Egyptian artifact—statues, jewelry, pottery, or papyrus. 
+                  Our AI will identify it instantly and reveal its ancient story.
                 </p>
                 
-                {/* CTA */}
-                <div className="flex items-center justify-center text-orange-600 font-semibold group-hover:text-orange-700">
-                  <span>Start Scanning</span>
-                  <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                {/* Decorative Bottom Line */}
+                <div className="flex items-center justify-center space-x-2 text-yellow-700">
+                  <div className="w-16 h-px bg-yellow-700"></div>
+                  <Eye className="w-5 h-5" />
+                  <div className="w-16 h-px bg-yellow-700"></div>
                 </div>
+              </div>
+
+              {/* Bottom Decorative Border */}
+              <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700 flex items-center justify-around">
+                {[...Array(12)].map((_, i) => (
+                  <div key={i} className="w-1 h-2 bg-amber-900"></div>
+                ))}
               </div>
             </button>
 
-            {/* Search Card */}
+            {/* Search Card - Scroll Style */}
             <button
               onClick={() => router.push("/search")}
-              className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border border-amber-200/50 overflow-hidden"
+              className="group relative bg-gradient-to-b from-amber-100 to-yellow-50 rounded-lg p-10 shadow-2xl hover:shadow-yellow-600/50 transition-all duration-500 border-4 border-yellow-700 overflow-hidden"
+              style={{
+                backgroundImage: 'linear-gradient(to bottom, rgba(251, 191, 36, 0.1), rgba(253, 224, 71, 0.1)), url("data:image/svg+xml,%3Csvg width="100" height="100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.05"/%3E%3C/svg%3E")'
+              }}
             >
-              {/* Gradient Overlay on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-amber-500/0 group-hover:from-orange-500/5 group-hover:to-amber-500/5 transition-all duration-500"></div>
-              
+              {/* Top Decorative Border */}
+              <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700 flex items-center justify-around">
+                {[...Array(12)].map((_, i) => (
+                  <div key={i} className="w-1 h-2 bg-amber-900"></div>
+                ))}
+              </div>
+
+              {/* Side Hieroglyphic Decorations */}
+              <div className="absolute left-2 top-20 bottom-20 w-8 flex flex-col justify-around text-yellow-700/30 text-2xl">
+                <span>𓋴</span>
+                <span>𓌙</span>
+                <span>𓍯</span>
+              </div>
+              <div className="absolute right-2 top-20 bottom-20 w-8 flex flex-col justify-around text-yellow-700/30 text-2xl">
+                <span>𓎡</span>
+                <span>𓂀</span>
+                <span>𓃭</span>
+              </div>
+
               <div className="relative z-10">
-                {/* Icon Container */}
-                <div className="mb-6 flex justify-center">
+                {/* Scroll Icon */}
+                <div className="mb-8 flex justify-center">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-amber-500 rounded-2xl blur-lg opacity-50 group-hover:opacity-70 transition-opacity"></div>
-                    <div className="relative bg-gradient-to-br from-orange-500 to-amber-600 w-20 h-20 rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
-                      <Search className="w-10 h-10 text-white" strokeWidth={2.5} />
+                    <div className="absolute inset-0 bg-yellow-600 rounded-full blur-xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                    <div className="relative bg-gradient-to-br from-yellow-600 via-amber-600 to-yellow-700 w-24 h-24 rounded-full flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl border-4 border-yellow-500">
+                      <Search className="w-12 h-12 text-amber-50" strokeWidth={2.5} />
                     </div>
                   </div>
                 </div>
 
-                {/* Content */}
-                <h2 className="text-3xl font-bold text-amber-900 mb-3 group-hover:text-orange-800 transition-colors">
-                  Search Collection
+                <h2 className="text-4xl font-bold text-amber-900 mb-4 tracking-wide" style={{ fontFamily: 'Papyrus, fantasy' }}>
+                  SEARCH COLLECTION
                 </h2>
-                <p className="text-amber-800/80 text-lg leading-relaxed mb-4">
-                  Browse thousands of artifacts by name, period, or keyword to uncover the stories behind ancient Egypt.
+                <p className="text-amber-800 text-lg leading-relaxed mb-6 px-4">
+                  Browse thousands of Egyptian treasures by pharaoh, dynasty, or keyword. 
+                  Explore mummies, temples, tombs, and the secrets of the Nile.
                 </p>
                 
-                {/* CTA */}
-                <div className="flex items-center justify-center text-orange-600 font-semibold group-hover:text-orange-700">
-                  <span>Explore Now</span>
-                  <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                {/* Decorative Bottom Line */}
+                <div className="flex items-center justify-center space-x-2 text-yellow-700">
+                  <div className="w-16 h-px bg-yellow-700"></div>
+                  <Scroll className="w-5 h-5" />
+                  <div className="w-16 h-px bg-yellow-700"></div>
                 </div>
+              </div>
+
+              {/* Bottom Decorative Border */}
+              <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700 flex items-center justify-around">
+                {[...Array(12)].map((_, i) => (
+                  <div key={i} className="w-1 h-2 bg-amber-900"></div>
+                ))}
               </div>
             </button>
           </div>
 
-          {/* Features */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-amber-200/50">
-              <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
+          {/* Feature Cards - Ancient Style */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+            {[
+              { icon: '⚡', title: 'Instant Recognition', desc: 'AI identifies artifacts in seconds' },
+              { icon: '📜', title: 'Rich History', desc: 'Detailed stories from ancient Egypt' },
+              { icon: '🏛️', title: 'Museum Collection', desc: 'Thousands of artifacts to explore' }
+            ].map((feature, i) => (
+              <div key={i} className="bg-black/40 backdrop-blur-sm rounded-lg p-6 border-2 border-yellow-600/50 hover:border-yellow-500 transition-all hover:bg-black/50">
+                <div className="text-5xl mb-4">{feature.icon}</div>
+                <h3 className="font-bold text-yellow-400 mb-2 text-lg tracking-wide">{feature.title}</h3>
+                <p className="text-sm text-yellow-600">{feature.desc}</p>
               </div>
-              <h3 className="font-bold text-amber-900 mb-2">Instant Recognition</h3>
-              <p className="text-sm text-amber-800/70">AI-powered identification in seconds</p>
-            </div>
-
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-amber-200/50">
-              <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-              <h3 className="font-bold text-amber-900 mb-2">Rich History</h3>
-              <p className="text-sm text-amber-800/70">Detailed cultural context and stories</p>
-            </div>
-
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-amber-200/50">
-              <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="font-bold text-amber-900 mb-2">Museum Collection</h3>
-              <p className="text-sm text-amber-800/70">Access to thousands of artifacts</p>
-            </div>
+            ))}
           </div>
         </main>
 
-        {/* Footer */}
-        <footer className="py-8 px-6 backdrop-blur-sm bg-white/70 border-t border-amber-200/50">
-          <div className="max-w-7xl mx-auto text-center">
-            <p className="text-amber-800/70 text-sm">
-              © {new Date().getFullYear()} Egyptian Museum AI Guide • Preserving Heritage Through Technology
+        {/* Footer with Hieroglyphic Style */}
+        <footer className="py-8 px-6 backdrop-blur-sm bg-black/40 border-t-2 border-yellow-600/50">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-center justify-center space-x-4 text-yellow-600/40 mb-4">
+              {['𓂀', '𓃭', '𓅓', '𓆣', '𓇋', '𓊪', '𓋴', '𓌙'].map((symbol, i) => (
+                <span key={i} className="text-2xl">{symbol}</span>
+              ))}
+            </div>
+            <p className="text-yellow-600 text-center text-sm tracking-widest">
+              © {new Date().getFullYear()} EGYPTIAN MUSEUM AI GUIDE • PRESERVING 5000 YEARS OF HISTORY
             </p>
           </div>
         </footer>
