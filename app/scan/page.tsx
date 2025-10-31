@@ -82,29 +82,29 @@ export default function ScanPage() {
   }, [preview]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-900 via-yellow-800 to-amber-900 relative overflow-hidden">
-      {/* Ancient Pattern Background */}
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900 relative overflow-hidden">
+      {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
-          backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(218, 165, 32, 0.3) 50px, rgba(218, 165, 32, 0.3) 51px),
-                           repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(218, 165, 32, 0.3) 50px, rgba(218, 165, 32, 0.3) 51px)`
+          backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(59, 130, 246, 0.3) 50px, rgba(59, 130, 246, 0.3) 51px),
+                           repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(251, 191, 36, 0.3) 50px, rgba(251, 191, 36, 0.3) 51px)`
         }}></div>
       </div>
 
-      {/* Papyrus Texture */}
+      {/* Texture */}
       <div className="absolute inset-0 opacity-5" style={{
         backgroundImage: 'url("data:image/svg+xml,%3Csvg width="100" height="100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.3"/%3E%3C/svg%3E")'
       }}></div>
 
       {/* Top Hieroglyphic Border */}
-      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black/40 to-transparent border-b-4 border-yellow-600/50">
+      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black/40 to-transparent border-b-2 border-blue-400/30">
         <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-6">
-          <div className="flex space-x-3 text-yellow-500/40 text-3xl">
+          <div className="flex space-x-3 text-blue-400/30 text-3xl">
             {['𓂀', '𓃭', '𓅓', '𓆣', '𓇋'].map((symbol, i) => (
               <span key={i}>{symbol}</span>
             ))}
           </div>
-          <div className="flex space-x-3 text-yellow-500/40 text-3xl">
+          <div className="flex space-x-3 text-amber-400/30 text-3xl">
             {['𓊪', '𓋴', '𓌙', '𓍯', '𓎡'].map((symbol, i) => (
               <span key={i}>{symbol}</span>
             ))}
@@ -114,20 +114,20 @@ export default function ScanPage() {
 
       <div className="relative z-10">
         {/* Navigation */}
-        <nav className="mt-20 px-6 py-5 backdrop-blur-sm bg-black/40 border-y-2 border-yellow-600/50">
+        <nav className="mt-20 px-6 py-5 backdrop-blur-md bg-slate-900/60 border-y border-blue-500/30">
           <div className="max-w-5xl mx-auto flex items-center justify-between">
             <button
               onClick={() => router.push("/")}
-              className="flex items-center space-x-3 text-yellow-400 hover:text-yellow-300 transition-colors group bg-black/30 px-4 py-2 rounded-full border border-yellow-600/30"
+              className="flex items-center space-x-3 text-blue-300 hover:text-blue-200 transition-colors group bg-slate-900/40 px-4 py-2 rounded-full border border-blue-500/30"
             >
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
               <span className="font-semibold tracking-wide">RETURN TO TEMPLE</span>
             </button>
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-yellow-600 to-amber-700 rounded-full flex items-center justify-center border-2 border-yellow-400 shadow-lg shadow-yellow-600/50">
-                <Camera className="w-5 h-5 text-amber-50" />
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full flex items-center justify-center border-2 border-amber-400 shadow-lg shadow-blue-500/50">
+                <Camera className="w-5 h-5 text-slate-900" />
               </div>
-              <span className="font-bold text-yellow-400 tracking-widest" style={{ fontFamily: 'Papyrus, fantasy' }}>ARTIFACT SCANNER</span>
+              <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200 tracking-widest" style={{ fontFamily: 'Papyrus, fantasy' }}>ARTIFACT SCANNER</span>
             </div>
           </div>
         </nav>
@@ -137,39 +137,33 @@ export default function ScanPage() {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
-              <div className="h-px w-24 bg-gradient-to-r from-transparent to-yellow-600"></div>
-              <div className="mx-4 flex items-center space-x-2 bg-yellow-600/20 border-2 border-yellow-600/50 rounded-full px-5 py-2 backdrop-blur-sm">
-                <Eye className="w-5 h-5 text-yellow-500" />
-                <span className="text-sm font-semibold text-yellow-400 tracking-widest">EYE OF HORUS VISION</span>
+              <div className="h-px w-24 bg-gradient-to-r from-transparent to-blue-400"></div>
+              <div className="mx-4 flex items-center space-x-2 bg-blue-500/10 border border-blue-400/40 rounded-full px-5 py-2 backdrop-blur-sm">
+                <Eye className="w-5 h-5 text-blue-400" />
+                <span className="text-sm font-semibold text-blue-300 tracking-widest">EYE OF HORUS VISION</span>
               </div>
-              <div className="h-px w-24 bg-gradient-to-l from-transparent to-yellow-600"></div>
+              <div className="h-px w-24 bg-gradient-to-l from-transparent to-amber-400"></div>
             </div>
-            <h1 className="text-6xl font-bold mb-4 text-yellow-400 drop-shadow-[0_0_30px_rgba(234,179,8,0.5)]" style={{ fontFamily: 'Papyrus, fantasy' }}>
+            <h1 className="text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-blue-300 to-amber-400 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]" style={{ fontFamily: 'Papyrus, fantasy' }}>
               REVEAL THE ARTIFACT
             </h1>
-            <p className="text-xl text-yellow-300/90 max-w-2xl mx-auto tracking-wide">
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto tracking-wide">
               Present your relic to the all-seeing eye. Ancient wisdom shall unveil its secrets.
             </p>
           </div>
 
-          {/* Upload Section - Temple Door Style */}
-          <div className="bg-gradient-to-b from-amber-100 to-yellow-50 rounded-lg shadow-2xl p-8 mb-8 border-4 border-yellow-700 relative" style={{
-            backgroundImage: 'url("data:image/svg+xml,%3Csvg width="100" height="100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.05"/%3E%3C/svg%3E")'
-          }}>
-            {/* Top Border Decoration */}
-            <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700 flex items-center justify-around">
-              {[...Array(20)].map((_, i) => (
-                <div key={i} className="w-1 h-2 bg-amber-900"></div>
-              ))}
-            </div>
+          {/* Upload Section */}
+          <div className="bg-gradient-to-b from-slate-800 to-slate-900 rounded-lg shadow-2xl p-8 mb-8 border-2 border-blue-500/40 relative">
+            {/* Top Border */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-amber-400 to-blue-500"></div>
 
             {/* Side Hieroglyphs */}
-            <div className="absolute left-2 top-16 bottom-16 w-10 flex flex-col justify-around text-yellow-700/30 text-3xl">
+            <div className="absolute left-2 top-16 bottom-16 w-10 flex flex-col justify-around text-blue-400/20 text-3xl">
               {['𓂀', '𓃭', '𓅓', '𓆣'].map((symbol, i) => (
                 <span key={i}>{symbol}</span>
               ))}
             </div>
-            <div className="absolute right-2 top-16 bottom-16 w-10 flex flex-col justify-around text-yellow-700/30 text-3xl">
+            <div className="absolute right-2 top-16 bottom-16 w-10 flex flex-col justify-around text-amber-400/20 text-3xl">
               {['𓇋', '𓊪', '𓋴', '𓌙'].map((symbol, i) => (
                 <span key={i}>{symbol}</span>
               ))}
@@ -178,7 +172,7 @@ export default function ScanPage() {
             <div className="mb-8 px-8">
               <label
                 htmlFor="file-upload"
-                className="relative flex flex-col items-center justify-center w-full h-96 border-4 border-dashed border-yellow-700 rounded-lg cursor-pointer bg-gradient-to-br from-amber-50/80 to-yellow-50/80 hover:from-amber-100/80 hover:to-yellow-100/80 transition-all duration-300 overflow-hidden group"
+                className="relative flex flex-col items-center justify-center w-full h-96 border-2 border-dashed border-blue-500/50 rounded-lg cursor-pointer bg-slate-800/50 hover:bg-slate-800/80 hover:border-blue-400/70 transition-all duration-300 overflow-hidden group"
               >
                 {preview ? (
                   <div className="relative w-full h-full p-4">
@@ -187,8 +181,8 @@ export default function ScanPage() {
                       alt="Preview"
                       className="w-full h-full object-contain rounded-lg"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8">
-                      <div className="flex items-center space-x-2 text-yellow-400 font-bold bg-black/60 px-6 py-3 rounded-full border-2 border-yellow-600">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8">
+                      <div className="flex items-center space-x-2 text-blue-300 font-bold bg-slate-900/80 px-6 py-3 rounded-full border border-blue-400/50">
                         <Upload className="w-5 h-5" />
                         <span className="tracking-wide">CHANGE OFFERING</span>
                       </div>
@@ -196,17 +190,17 @@ export default function ScanPage() {
                   </div>
                 ) : (
                   <div className="text-center p-8">
-                    <div className="w-28 h-28 bg-gradient-to-br from-yellow-600 via-amber-600 to-yellow-700 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform shadow-2xl border-4 border-yellow-500 shadow-yellow-600/50">
-                      <Camera className="w-14 h-14 text-amber-50" strokeWidth={2} />
+                    <div className="w-28 h-28 bg-gradient-to-br from-blue-500 via-cyan-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform shadow-2xl border-2 border-amber-400 shadow-blue-500/50">
+                      <Camera className="w-14 h-14 text-slate-900" strokeWidth={2} />
                     </div>
-                    <h3 className="text-3xl font-bold text-amber-900 mb-4 tracking-wide" style={{ fontFamily: 'Papyrus, fantasy' }}>
+                    <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200 mb-4 tracking-wide" style={{ fontFamily: 'Papyrus, fantasy' }}>
                       PRESENT YOUR ARTIFACT
                     </h3>
-                    <p className="text-amber-800 mb-6 max-w-md mx-auto text-lg">
+                    <p className="text-slate-300 mb-6 max-w-md mx-auto text-lg">
                       Place your sacred relic before the Eye of Horus
                     </p>
-                    <div className="inline-flex items-center space-x-3 bg-amber-900/20 border-2 border-yellow-700 rounded-full px-6 py-3">
-                      <span className="text-sm text-amber-900 font-semibold tracking-wider">
+                    <div className="inline-flex items-center space-x-3 bg-slate-800/60 border border-blue-500/40 rounded-full px-6 py-3">
+                      <span className="text-sm text-blue-300 font-semibold tracking-wider">
                         PNG • JPG • JPEG • MAX 10MB
                       </span>
                     </div>
@@ -224,11 +218,11 @@ export default function ScanPage() {
             </div>
 
             {error && (
-              <div className="mb-6 mx-8 p-4 bg-red-900/20 border-2 border-red-700 rounded-lg flex items-start space-x-3">
-                <AlertCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
+              <div className="mb-6 mx-8 p-4 bg-red-900/20 border border-red-500/50 rounded-lg flex items-start space-x-3">
+                <AlertCircle className="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" />
                 <div className="flex-1">
-                  <p className="text-red-900 font-bold tracking-wide">THE GODS REJECT THIS OFFERING</p>
-                  <p className="text-red-800 text-sm">{error}</p>
+                  <p className="text-red-300 font-bold tracking-wide">THE GODS REJECT THIS OFFERING</p>
+                  <p className="text-red-400 text-sm">{error}</p>
                 </div>
               </div>
             )}
@@ -237,10 +231,10 @@ export default function ScanPage() {
               <button
                 onClick={handleUpload}
                 disabled={loading || !file}
-                className={`w-full py-5 rounded-lg font-bold text-xl transition-all duration-300 shadow-2xl flex items-center justify-center space-x-3 border-4 tracking-widest ${
+                className={`w-full py-5 rounded-lg font-bold text-xl transition-all duration-300 shadow-2xl flex items-center justify-center space-x-3 border-2 tracking-widest ${
                   loading || !file
-                    ? "bg-gray-400 text-gray-700 border-gray-500 cursor-not-allowed"
-                    : "bg-gradient-to-r from-yellow-600 via-amber-600 to-yellow-700 hover:from-yellow-700 hover:via-amber-700 hover:to-yellow-800 text-amber-50 border-yellow-500 hover:shadow-yellow-600/50 hover:scale-[1.02] active:scale-[0.98]"
+                    ? "bg-slate-700 text-slate-500 border-slate-600 cursor-not-allowed"
+                    : "bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-700 hover:via-blue-600 hover:to-cyan-600 text-white border-amber-400 hover:shadow-blue-500/50 hover:scale-[1.02] active:scale-[0.98]"
                 }`}
                 style={{ fontFamily: 'Papyrus, fantasy' }}
               >
@@ -277,46 +271,38 @@ export default function ScanPage() {
               </button>
             </div>
 
-            {/* Bottom Border Decoration */}
-            <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700 flex items-center justify-around">
-              {[...Array(20)].map((_, i) => (
-                <div key={i} className="w-1 h-2 bg-amber-900"></div>
-              ))}
-            </div>
+            {/* Bottom Border */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-blue-500 to-amber-400"></div>
           </div>
 
-          {/* Results - Papyrus Scroll Style */}
+          {/* Results */}
           {result && (
-            <div className="bg-gradient-to-b from-amber-100 to-yellow-50 rounded-lg shadow-2xl p-8 border-4 border-yellow-700 animate-fadeIn relative" style={{
-              backgroundImage: 'url("data:image/svg+xml,%3Csvg width="100" height="100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.05"/%3E%3C/svg%3E")'
-            }}>
-              {/* Decorative Border */}
-              <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700"></div>
-              <div className="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700"></div>
+            <div className="bg-gradient-to-b from-slate-800 to-slate-900 rounded-lg shadow-2xl p-8 border-2 border-blue-500/40 animate-fadeIn relative">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-amber-400 to-blue-500"></div>
 
               {result.artifact_id ? (
                 <>
                   {/* Success Header */}
-                  <div className="flex items-start space-x-6 mb-8 pb-8 border-b-4 border-yellow-700/30">
-                    <div className="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-green-600 to-emerald-700 rounded-full flex items-center justify-center shadow-2xl border-4 border-green-400">
+                  <div className="flex items-start space-x-6 mb-8 pb-8 border-b-2 border-blue-500/30">
+                    <div className="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center shadow-2xl border-2 border-emerald-300">
                       <CheckCircle2 className="w-10 h-10 text-white" strokeWidth={3} />
                     </div>
                     <div className="flex-1">
-                      <h2 className="text-4xl font-bold text-amber-900 mb-3 tracking-wide" style={{ fontFamily: 'Papyrus, fantasy' }}>
+                      <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200 mb-3 tracking-wide" style={{ fontFamily: 'Papyrus, fantasy' }}>
                         THE GODS HAVE SPOKEN
                       </h2>
-                      <p className="text-3xl font-bold bg-gradient-to-r from-yellow-700 to-amber-700 bg-clip-text text-transparent mb-4">
+                      <p className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 mb-4">
                         {result.artifact_id}
                       </p>
                       {result.confidence && (
                         <div className="space-y-3">
-                          <div className="flex items-center justify-between text-amber-900 font-bold">
+                          <div className="flex items-center justify-between text-slate-300 font-bold">
                             <span className="tracking-wide">DIVINE CERTAINTY</span>
-                            <span className="text-xl">{(result.confidence * 100).toFixed(0)}%</span>
+                            <span className="text-xl text-blue-300">{(result.confidence * 100).toFixed(0)}%</span>
                           </div>
-                          <div className="w-full bg-amber-900/20 rounded-full h-4 overflow-hidden border-2 border-yellow-700">
+                          <div className="w-full bg-slate-700/50 rounded-full h-4 overflow-hidden border border-blue-500/30">
                             <div
-                              className="h-4 bg-gradient-to-r from-yellow-600 via-amber-600 to-yellow-700 rounded-full transition-all duration-1000 ease-out"
+                              className="h-4 bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 rounded-full transition-all duration-1000 ease-out shadow-lg shadow-blue-500/50"
                               style={{ width: `${result.confidence * 100}%` }}
                             />
                           </div>
@@ -329,26 +315,26 @@ export default function ScanPage() {
                   {result.analysis && result.analysis !== "Analysis unavailable at this time." ? (
                     <div>
                       <div className="flex items-center space-x-4 mb-6">
-                        <div className="w-14 h-14 bg-gradient-to-br from-yellow-600 to-amber-700 rounded-full flex items-center justify-center border-4 border-yellow-500 shadow-lg">
-                          <Eye className="w-7 h-7 text-amber-50" />
+                        <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-full flex items-center justify-center border-2 border-blue-400 shadow-lg shadow-amber-500/50">
+                          <Eye className="w-7 h-7 text-slate-900" />
                         </div>
-                        <h3 className="text-3xl font-bold text-amber-900 tracking-wide" style={{ fontFamily: 'Papyrus, fantasy' }}>
+                        <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 tracking-wide" style={{ fontFamily: 'Papyrus, fantasy' }}>
                           ANCIENT WISDOM REVEALED
                         </h3>
                       </div>
-                      <div className="bg-amber-900/10 rounded-lg p-8 border-2 border-yellow-700">
-                        <p className="text-amber-900 leading-relaxed whitespace-pre-wrap text-lg">
+                      <div className="bg-slate-800/50 rounded-lg p-8 border border-blue-500/30">
+                        <p className="text-slate-200 leading-relaxed whitespace-pre-wrap text-lg">
                           {result.analysis}
                         </p>
                       </div>
                     </div>
                   ) : (
-                    <div className="text-center py-12 bg-amber-900/10 rounded-lg border-2 border-yellow-700">
-                      <AlertCircle className="w-16 h-16 text-yellow-700 mx-auto mb-4" />
-                      <p className="text-amber-900 font-bold text-xl tracking-wide" style={{ fontFamily: 'Papyrus, fantasy' }}>
+                    <div className="text-center py-12 bg-slate-800/50 rounded-lg border border-blue-500/30">
+                      <AlertCircle className="w-16 h-16 text-blue-400 mx-auto mb-4" />
+                      <p className="text-amber-300 font-bold text-xl tracking-wide" style={{ fontFamily: 'Papyrus, fantasy' }}>
                         ARTIFACT RECOGNIZED
                       </p>
-                      <p className="text-amber-800 mt-2">
+                      <p className="text-slate-400 mt-2">
                         The scribes are gathering more knowledge
                       </p>
                     </div>
@@ -356,7 +342,7 @@ export default function ScanPage() {
                 </>
               ) : (
                 <div className="text-center py-16">
-                  <div className="w-24 h-24 bg-gradient-to-br from-red-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl border-4 border-red-500">
+                  <div className="w-24 h-24 bg-gradient-to-br from-red-600 to-rose-700 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl border-2 border-red-400">
                     <svg
                       className="w-12 h-12 text-white"
                       fill="none"
@@ -371,14 +357,15 @@ export default function ScanPage() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-3xl font-bold text-amber-900 mb-4 tracking-wide" style={{ fontFamily: 'Papyrus, fantasy' }}>
+                  <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200 mb-4 tracking-wide" style={{ fontFamily: 'Papyrus, fantasy' }}>
                     THE GODS SEE NO ARTIFACT
                   </h3>
-                  <p className="text-amber-800 text-lg max-w-md mx-auto">
+                  <p className="text-slate-300 text-lg max-w-md mx-auto">
                     Ensure your offering is clear and well-lit. The Eye of Horus requires clarity to divine truth.
                   </p>
                 </div>
               )}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-blue-500 to-amber-400"></div>
             </div>
           )}
         </main>
