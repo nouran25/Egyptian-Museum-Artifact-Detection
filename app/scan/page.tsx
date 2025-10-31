@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { ArrowLeft, Camera, Upload, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface DetectionResult {
   artifact_id: string;
@@ -11,6 +13,7 @@ interface DetectionResult {
 }
 
 export default function ScanPage() {
+  const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [result, setResult] = useState<DetectionResult | null>(null);
@@ -79,121 +82,221 @@ export default function ScanPage() {
   }, [preview]);
 
   return (
-    <div className="flex flex-col items-center min-h-screen p-6 bg-gradient-to-b from-gray-50 to-amber-50">
-      <div className="w-full max-w-2xl">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-2 text-blue-900">🏛️ Artifact Scanner</h1>
-          <p className="text-gray-600">
-            Point your camera at an artifact to discover its story.
-          </p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-10 w-72 h-72 bg-orange-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-amber-200/20 rounded-full blur-3xl"></div>
+      </div>
 
-        {/* Upload card */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-6 border border-blue-100">
-          <div className="mb-6">
-            <label
-              htmlFor="file-upload"
-              className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-blue-300 rounded-xl cursor-pointer bg-blue-50 hover:bg-blue-100 transition-colors"
+      <div className="relative z-10">
+        {/* Navigation */}
+        <nav className="px-6 py-4 backdrop-blur-sm bg-white/70 border-b border-amber-200/50">
+          <div className="max-w-5xl mx-auto flex items-center justify-between">
+            <button
+              onClick={() => router.push("/")}
+              className="flex items-center space-x-2 text-amber-800 hover:text-orange-700 transition-colors group"
             >
-              {preview ? (
-                <img
-                  src={preview}
-                  alt="Preview"
-                  className="max-h-44 object-contain rounded-lg"
-                />
-              ) : (
-                <div className="text-center">
-                  <svg
-                    className="mx-auto h-12 w-12 text-blue-400 mb-3"
-                    stroke="currentColor"
-                    fill="none"
-                    viewBox="0 0 48 48"
-                  >
-                    <path
-                      d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <p className="text-sm text-gray-700 mb-1">
-                    <span className="font-semibold text-blue-700">
-                      Click to upload
-                    </span>{" "}
-                    or drag and drop
-                  </p>
-                  <p className="text-xs text-gray-500">
-                    PNG, JPG, JPEG up to 10MB
-                  </p>
-                </div>
-              )}
-            </label>
-            <input
-              id="file-upload"
-              type="file"
-              accept="image/*"
-              capture="environment"
-              onChange={handleFileChange}
-              className="hidden"
-            />
+              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+              <span className="font-medium">Back to Home</span>
+            </button>
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-amber-600 to-orange-600 rounded-lg flex items-center justify-center">
+                <Camera className="w-5 h-5 text-white" />
+              </div>
+              <span className="font-bold text-amber-900">Artifact Scanner</span>
+            </div>
+          </div>
+        </nav>
+
+        {/* Main Content */}
+        <main className="max-w-5xl mx-auto px-6 py-12">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-300 rounded-full px-4 py-2 mb-4">
+              <Sparkles className="w-4 h-4 text-amber-700" />
+              <span className="text-sm font-medium text-amber-800">AI-Powered Recognition</span>
+            </div>
+            <h1 className="text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-amber-900 to-orange-800 bg-clip-text text-transparent">
+                Identify Your Artifact
+              </span>
+            </h1>
+            <p className="text-xl text-amber-800/80 max-w-2xl mx-auto">
+              Upload a photo of any Egyptian artifact and let AI reveal its identity and history
+            </p>
           </div>
 
-          {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-red-700 text-sm">⚠️ {error}</p>
+          {/* Upload Section */}
+          <div className="bg-white rounded-3xl shadow-2xl p-8 mb-8 border border-amber-200/50">
+            <div className="mb-8">
+              <label
+                htmlFor="file-upload"
+                className="relative flex flex-col items-center justify-center w-full h-80 border-3 border-dashed border-amber-300 rounded-2xl cursor-pointer bg-gradient-to-br from-amber-50/50 to-orange-50/50 hover:from-amber-100/50 hover:to-orange-100/50 transition-all duration-300 overflow-hidden group"
+              >
+                {preview ? (
+                  <div className="relative w-full h-full p-4">
+                    <img
+                      src={preview}
+                      alt="Preview"
+                      className="w-full h-full object-contain rounded-xl"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8">
+                      <span className="text-white font-semibold flex items-center space-x-2">
+                        <Upload className="w-5 h-5" />
+                        <span>Click to change image</span>
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-center p-8">
+                    <div className="w-24 h-24 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                      <Camera className="w-12 h-12 text-white" strokeWidth={2} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-amber-900 mb-3">
+                      Upload Artifact Photo
+                    </h3>
+                    <p className="text-amber-800/70 mb-4 max-w-md mx-auto">
+                      Drag and drop an image here, or click to browse your files
+                    </p>
+                    <div className="inline-flex items-center space-x-2 bg-amber-100 border border-amber-300 rounded-full px-4 py-2">
+                      <span className="text-sm text-amber-800">
+                        PNG, JPG, JPEG • Max 10MB
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </label>
+              <input
+                id="file-upload"
+                type="file"
+                accept="image/*"
+                capture="environment"
+                onChange={handleFileChange}
+                className="hidden"
+              />
             </div>
-          )}
 
-          <button
-            onClick={handleUpload}
-            disabled={loading || !file}
-            className={`w-full px-6 py-3 rounded-xl text-white font-semibold transition-all ${
-              loading || !file
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700 active:scale-95 shadow-lg hover:shadow-xl"
-            }`}
-          >
-            {loading ? (
-              <span className="flex items-center justify-center">
-                <svg
-                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  />
-                </svg>
-                Analyzing Artifact...
-              </span>
-            ) : (
-              "📷 Scan Artifact"
+            {error && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start space-x-3">
+                <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                <div className="flex-1">
+                  <p className="text-red-800 font-medium">Error</p>
+                  <p className="text-red-700 text-sm">{error}</p>
+                </div>
+              </div>
             )}
-          </button>
-        </div>
 
-        {/* Results */}
-        {result && (
-          <div className="bg-white rounded-2xl shadow-lg p-8 border border-blue-100 animate-fadeIn">
-            {result.artifact_id ? (
-              <>
-                {/* Detection Success */}
-                <div className="flex items-start mb-6 pb-6 border-b border-gray-200">
-                  <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+            <button
+              onClick={handleUpload}
+              disabled={loading || !file}
+              className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg flex items-center justify-center space-x-3 ${
+                loading || !file
+                  ? "bg-gray-300 text-gray-600 cursor-not-allowed"
+                  : "bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+              }`}
+            >
+              {loading ? (
+                <>
+                  <svg
+                    className="animate-spin h-6 w-6 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    />
+                  </svg>
+                  <span>Analyzing Artifact...</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-6 h-6" />
+                  <span>Scan & Identify Artifact</span>
+                </>
+              )}
+            </button>
+          </div>
+
+          {/* Results */}
+          {result && (
+            <div className="bg-white rounded-3xl shadow-2xl p-8 border border-amber-200/50 animate-fadeIn">
+              {result.artifact_id ? (
+                <>
+                  {/* Success Header */}
+                  <div className="flex items-start space-x-4 mb-8 pb-8 border-b border-amber-200">
+                    <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
+                      <CheckCircle2 className="w-8 h-8 text-white" strokeWidth={2.5} />
+                    </div>
+                    <div className="flex-1">
+                      <h2 className="text-3xl font-bold text-amber-900 mb-2">
+                        Artifact Identified
+                      </h2>
+                      <p className="text-2xl font-semibold bg-gradient-to-r from-amber-700 to-orange-700 bg-clip-text text-transparent mb-3">
+                        {result.artifact_id}
+                      </p>
+                      {result.confidence && (
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between text-sm text-amber-800">
+                            <span className="font-medium">Confidence Level</span>
+                            <span className="font-bold">{(result.confidence * 100).toFixed(1)}%</span>
+                          </div>
+                          <div className="w-full bg-amber-100 rounded-full h-3 overflow-hidden">
+                            <div
+                              className="h-3 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full transition-all duration-1000 ease-out shadow-sm"
+                              style={{ width: `${result.confidence * 100}%` }}
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Analysis */}
+                  {result.analysis && result.analysis !== "Analysis unavailable at this time." ? (
+                    <div>
+                      <div className="flex items-center space-x-3 mb-6">
+                        <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+                          <Sparkles className="w-6 h-6 text-white" />
+                        </div>
+                        <h3 className="text-2xl font-bold text-amber-900">
+                          Historical Context
+                        </h3>
+                      </div>
+                      <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200">
+                        <p className="text-amber-900 leading-relaxed whitespace-pre-wrap text-lg">
+                          {result.analysis}
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-center py-8 bg-amber-50 rounded-2xl border border-amber-200">
+                      <AlertCircle className="w-12 h-12 text-amber-600 mx-auto mb-3" />
+                      <p className="text-amber-800 font-medium">
+                        Artifact detected successfully
+                      </p>
+                      <p className="text-amber-700 text-sm mt-1">
+                        Detailed analysis is currently unavailable
+                      </p>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="text-center py-12">
+                  <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                     <svg
-                      className="w-6 h-6 text-green-600"
+                      className="w-10 h-10 text-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -202,95 +305,28 @@ export default function ScanPage() {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M5 13l4 4L19 7"
+                        d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
                   </div>
-                  <div className="flex-1">
-                    <h2 className="text-xl font-bold text-gray-900 mb-1">
-                      Artifact Detected
-                    </h2>
-                    <p className="text-2xl font-semibold text-blue-700 mb-2">
-                      {result.artifact_id}
-                    </p>
-                    {result.confidence && (
-                      <div className="flex items-center">
-                        <span className="text-sm text-gray-600 mr-2">
-                          Confidence:
-                        </span>
-                        <div className="flex-1 max-w-xs bg-gray-200 rounded-full h-2">
-                          <div
-                            className="bg-green-500 h-2 rounded-full transition-all"
-                            style={{
-                              width: `${result.confidence * 100}%`,
-                            }}
-                          />
-                        </div>
-                        <span className="ml-2 text-sm font-semibold text-gray-700">
-                          {(result.confidence * 100).toFixed(1)}%
-                        </span>
-                      </div>
-                    )}
-                  </div>
+                  <h3 className="text-2xl font-bold text-amber-900 mb-2">
+                    No Artifact Detected
+                  </h3>
+                  <p className="text-amber-800/70 max-w-md mx-auto">
+                    Try taking a clearer photo with better lighting, or ensure the artifact is centered in the frame.
+                  </p>
                 </div>
-
-                {/* AI Analysis */}
-                {result.analysis &&
-                result.analysis !== "Analysis unavailable at this time." ? (
-                  <div>
-                    <h3 className="text-lg font-semibold text-amber-700 mb-3 flex items-center">
-                      <span className="text-2xl mr-2">🏛️</span>
-                      Cultural & Historical Context
-                    </h3>
-                    <div className="prose prose-sm max-w-none">
-                      <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-                        {result.analysis}
-                      </p>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="text-center py-4">
-                    <p className="text-gray-500 text-sm">
-                      ℹ️ AI analysis is currently unavailable. The artifact was
-                      detected successfully!
-                    </p>
-                  </div>
-                )}
-              </>
-            ) : (
-              <div className="text-center py-8">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-red-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </div>
-                <p className="text-red-600 font-semibold text-lg">
-                  No artifact detected
-                </p>
-                <p className="text-gray-500 text-sm mt-2">
-                  Try taking a clearer photo with better lighting.
-                </p>
-              </div>
-            )}
-          </div>
-        )}
+              )}
+            </div>
+          )}
+        </main>
       </div>
 
       <style jsx>{`
         @keyframes fadeIn {
           from {
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
@@ -298,7 +334,7 @@ export default function ScanPage() {
           }
         }
         .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
+          animation: fadeIn 0.5s ease-out;
         }
       `}</style>
     </div>
