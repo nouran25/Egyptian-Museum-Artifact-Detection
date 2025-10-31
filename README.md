@@ -146,8 +146,6 @@ graph LR
 | **Inference Time (CPU)** | ~180ms |
 | **Model Size** | 52.9 MB |
 
-![Training Metrics](./assets/training-results.png)
-
 ### Detected Artifact Categories
 
 <details>
@@ -275,16 +273,12 @@ CONFIDENCE_THRESHOLD=0.5
 3. **Wait for Detection**: AI processes image in real-time
 4. **View Results**: See artifact name, confidence, and historical context
 
-![Scan Usage](./assets/usage-scan.png)
-
 ### Searching Artifacts
 
 1. **Navigate to Search Page**: Click "Search Artifact" on homepage
 2. **Enter Query**: Type artifact name, culture, or keyword
 3. **Browse Results**: View matching artifacts from museum database
 4. **Explore Details**: Click any result for AI-generated analysis
-
-![Search Usage](./assets/usage-search.png)
 
 ### Example API Request
 
@@ -627,7 +621,6 @@ in the Software without restriction...
 ## 📞 Contact & Support
 
 - **Project Repository**: [github.com/nouran25/Egyptian-Museum-Artifact-Detection](https://github.com/nouran25/Egyptian-Museum-Artifact-Detection)
-- **Documentation**: [docs.your-site.com](https://docs.your-site.com)
 - **Issues**: [GitHub Issues](https://github.com/nouran25/Egyptian-Museum-Artifact-Detection/issues)
 - **Email**: nouranmostafa520@gmail.com
 
