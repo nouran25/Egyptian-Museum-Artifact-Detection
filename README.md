@@ -73,8 +73,6 @@
 
 ### Live Demo
 
-🌐 **[Try the Live Application](https://your-demo-url.vercel.app)**
-
 📹 **![Watch Video Demonstration](./assets/demo.gif)**
 
 ---
