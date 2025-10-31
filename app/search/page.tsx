@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { ArrowLeft, Search, Sparkles, Calendar, Globe, Loader2, Info } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface Artwork {
   title?: string;
@@ -17,6 +19,7 @@ interface Artwork {
 }
 
 export default function SearchPage() {
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Artwork[]>([]);
   const [loading, setLoading] = useState(false);
@@ -105,195 +108,241 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen p-6 bg-gradient-to-b from-gray-50 to-amber-50">
-      <div className="w-full max-w-2xl">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-extrabold mb-2 text-blue-900 tracking-tight">
-            🔍 Artifact Search
-          </h1>
-          <p className="text-gray-600 text-base">
-            Search by artifact name, artist, or keyword to explore world heritage.
-          </p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-amber-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-200/20 rounded-full blur-3xl"></div>
+      </div>
 
-        {/* Search Bar */}
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 mb-6">
-          <div className="flex space-x-3">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              placeholder="Search artifacts... (e.g., Egyptian, Greek, Renaissance)"
-              className="flex-1 p-3 bg-blue-50 text-blue-900 placeholder-gray-500 
-                         border border-blue-200 rounded-xl focus:bg-white 
-                         focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            />
+      <div className="relative z-10">
+        {/* Navigation */}
+        <nav className="px-6 py-4 backdrop-blur-sm bg-white/70 border-b border-amber-200/50">
+          <div className="max-w-6xl mx-auto flex items-center justify-between">
             <button
-              onClick={handleSearch}
-              disabled={loading || !query.trim()}
-              className={`px-6 py-3 rounded-xl font-semibold transition-all shadow-sm 
-                ${
+              onClick={() => router.push("/")}
+              className="flex items-center space-x-2 text-amber-800 hover:text-orange-700 transition-colors group"
+            >
+              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+              <span className="font-medium">Back to Home</span>
+            </button>
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-amber-600 to-orange-600 rounded-lg flex items-center justify-center">
+                <Search className="w-5 h-5 text-white" />
+              </div>
+              <span className="font-bold text-amber-900">Collection Search</span>
+            </div>
+          </div>
+        </nav>
+
+        {/* Main Content */}
+        <main className="max-w-6xl mx-auto px-6 py-12">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-300 rounded-full px-4 py-2 mb-4">
+              <Sparkles className="w-4 h-4 text-amber-700" />
+              <span className="text-sm font-medium text-amber-800">Explore Thousands of Artifacts</span>
+            </div>
+            <h1 className="text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-amber-900 to-orange-800 bg-clip-text text-transparent">
+                Search the Collection
+              </span>
+            </h1>
+            <p className="text-xl text-amber-800/80 max-w-2xl mx-auto">
+              Discover artifacts by name, period, culture, or keyword
+            </p>
+          </div>
+
+          {/* Search Bar */}
+          <div className="bg-white rounded-3xl shadow-2xl p-6 mb-8 border border-amber-200/50">
+            <div className="flex space-x-4">
+              <div className="flex-1 relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-amber-600" />
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                  placeholder="Try 'pharaoh', 'hieroglyphics', 'sphinx'..."
+                  className="w-full pl-12 pr-4 py-4 bg-gradient-to-r from-amber-50 to-orange-50 text-amber-900 placeholder-amber-600/60 border-2 border-amber-200 rounded-2xl focus:bg-white focus:border-amber-500 focus:outline-none transition-all text-lg font-medium"
+                />
+              </div>
+              <button
+                onClick={handleSearch}
+                disabled={loading || !query.trim()}
+                className={`px-8 py-4 rounded-2xl font-bold text-lg transition-all shadow-lg flex items-center space-x-2 ${
                   loading || !query.trim()
                     ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-                    : "bg-blue-700 hover:bg-blue-800 text-white active:scale-95"
+                    : "bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white hover:shadow-xl hover:scale-105 active:scale-95"
                 }`}
-            >
-              {loading ? (
-                <span className="flex items-center">
-                  <svg
-                    className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    />
-                  </svg>
-                  Searching...
-                </span>
-              ) : (
-                "Search"
-              )}
-            </button>
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span>Searching...</span>
+                  </>
+                ) : (
+                  <>
+                    <Search className="w-5 h-5" />
+                    <span>Search</span>
+                  </>
+                )}
+              </button>
+            </div>
           </div>
-        </div>
 
-        {/* Results */}
-        {results.length > 0 && (
-          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 mb-6 animate-fadeIn">
-            <h2 className="text-lg font-semibold text-blue-900 mb-4">
-              Results ({results.length})
-            </h2>
-            <ul className="space-y-4">
-              {results.map((artwork, idx) => (
-                <li
-                  key={idx}
-                  onClick={() => handleAnalyze(artwork)}
-                  className="p-4 border border-gray-200 rounded-xl hover:bg-amber-50 
-                             transition-all cursor-pointer group"
-                >
-                  <div className="flex items-center space-x-4">
-                    {artwork.primaryImage || artwork.primaryImageSmall ? (
-                      <img
-                        src={artwork.primaryImageSmall || artwork.primaryImage}
-                        alt={artwork.title || "Artwork"}
-                        className="w-16 h-16 object-cover rounded-lg border group-hover:shadow-md transition-shadow"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-gray-400 text-sm">
-                        No Image
+          {/* Results Grid */}
+          {results.length > 0 && (
+            <div className="bg-white rounded-3xl shadow-2xl p-8 mb-8 border border-amber-200/50 animate-fadeIn">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-amber-900">
+                  Search Results
+                </h2>
+                <span className="px-4 py-2 bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-300 rounded-full text-sm font-bold text-amber-800">
+                  {results.length} {results.length === 1 ? "artifact" : "artifacts"} found
+                </span>
+              </div>
+              
+              <div className="grid gap-4">
+                {results.map((artwork, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleAnalyze(artwork)}
+                    className="group p-5 border-2 border-amber-200 rounded-2xl hover:border-orange-400 hover:bg-gradient-to-r hover:from-amber-50/50 hover:to-orange-50/50 transition-all cursor-pointer text-left"
+                  >
+                    <div className="flex items-center space-x-5">
+                      {artwork.primaryImage || artwork.primaryImageSmall ? (
+                        <div className="relative flex-shrink-0">
+                          <img
+                            src={artwork.primaryImageSmall || artwork.primaryImage}
+                            alt={artwork.title || "Artwork"}
+                            className="w-24 h-24 object-cover rounded-xl border-2 border-amber-200 group-hover:border-orange-400 transition-all shadow-md group-hover:shadow-lg"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        </div>
+                      ) : (
+                        <div className="w-24 h-24 bg-gradient-to-br from-amber-100 to-orange-100 rounded-xl flex items-center justify-center border-2 border-amber-200">
+                          <Info className="w-8 h-8 text-amber-600" />
+                        </div>
+                      )}
+                      
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-xl font-bold text-amber-900 group-hover:text-orange-700 transition-colors mb-2 truncate">
+                          {artwork.title || "Untitled Artifact"}
+                        </h3>
+                        <p className="text-amber-700 font-medium mb-2">
+                          {artwork.artistDisplayName || "Unknown Artist"}
+                        </p>
+                        <div className="flex items-center gap-4 text-sm text-amber-600">
+                          {artwork.objectDate && (
+                            <span className="flex items-center gap-1">
+                              <Calendar className="w-4 h-4" />
+                              {artwork.objectDate}
+                            </span>
+                          )}
+                          {artwork.culture && (
+                            <span className="flex items-center gap-1">
+                              <Globe className="w-4 h-4" />
+                              {artwork.culture}
+                            </span>
+                          )}
+                        </div>
                       </div>
-                    )}
-                    <div className="flex-1">
-                      <p className="text-blue-800 font-semibold group-hover:text-blue-600">
-                        {artwork.title || "Untitled"}
-                      </p>
-                      <p className="text-sm text-gray-600">
-                        {artwork.artistDisplayName || "Unknown Artist"}
-                      </p>
-                      <div className="flex items-center gap-2 mt-1 text-sm text-gray-500">
-                        {artwork.objectDate && <p>📅 {artwork.objectDate}</p>}
-                        {artwork.culture && <p>🌍 {artwork.culture}</p>}
+
+                      <div className="flex-shrink-0">
+                        <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
-        {/* Analysis Result */}
-        {selectedArtwork && (
-          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 animate-fadeIn">
-            <div className="flex items-start space-x-4 mb-6 pb-6 border-b border-gray-200">
-              {(selectedArtwork.primaryImage ||
-                selectedArtwork.primaryImageSmall) && (
-                <img
-                  src={
-                    selectedArtwork.primaryImageSmall ||
-                    selectedArtwork.primaryImage
-                  }
-                  alt={selectedArtwork.title || "Artwork"}
-                  className="w-24 h-24 object-cover rounded-lg border shadow-sm"
-                />
-              )}
-              <div className="flex-1">
-                <h2 className="text-xl font-bold text-blue-900 mb-1">
-                  {selectedArtwork.title || "Untitled"}
-                </h2>
-                <p className="text-gray-700">
-                  {selectedArtwork.artistDisplayName || "Unknown Artist"}
-                </p>
-                {selectedArtwork.objectDate && (
-                  <p className="text-sm text-gray-500 mt-1">
-                    {selectedArtwork.objectDate}
+          {/* Analysis Panel */}
+          {selectedArtwork && (
+            <div className="bg-white rounded-3xl shadow-2xl p-8 border border-amber-200/50 animate-fadeIn">
+              {/* Artwork Header */}
+              <div className="flex items-start space-x-6 mb-8 pb-8 border-b border-amber-200">
+                {(selectedArtwork.primaryImage || selectedArtwork.primaryImageSmall) && (
+                  <div className="flex-shrink-0">
+                    <img
+                      src={selectedArtwork.primaryImageSmall || selectedArtwork.primaryImage}
+                      alt={selectedArtwork.title || "Artwork"}
+                      className="w-32 h-32 object-cover rounded-2xl border-2 border-amber-300 shadow-lg"
+                    />
+                  </div>
+                )}
+                <div className="flex-1">
+                  <h2 className="text-3xl font-bold text-amber-900 mb-3">
+                    {selectedArtwork.title || "Untitled Artifact"}
+                  </h2>
+                  <p className="text-xl text-amber-700 font-medium mb-3">
+                    {selectedArtwork.artistDisplayName || "Unknown Artist"}
                   </p>
+                  <div className="flex flex-wrap gap-3">
+                    {selectedArtwork.objectDate && (
+                      <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-100 border border-amber-300 rounded-full text-sm text-amber-800">
+                        <Calendar className="w-4 h-4" />
+                        {selectedArtwork.objectDate}
+                      </span>
+                    )}
+                    {selectedArtwork.culture && (
+                      <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-orange-100 border border-orange-300 rounded-full text-sm text-orange-800">
+                        <Globe className="w-4 h-4" />
+                        {selectedArtwork.culture}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Analysis Content */}
+              <div>
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <Sparkles className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-amber-900">
+                    Historical Insights
+                  </h3>
+                </div>
+
+                {contextLoading ? (
+                  <div className="flex items-center justify-center py-16 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-200">
+                    <div className="text-center">
+                      <Loader2 className="w-12 h-12 text-amber-600 animate-spin mx-auto mb-4" />
+                      <p className="text-amber-800 font-medium">
+                        Analyzing artifact...
+                      </p>
+                      <p className="text-amber-600 text-sm mt-1">
+                        Gathering historical context
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200">
+                    <p className="text-amber-900 leading-relaxed whitespace-pre-wrap text-lg">
+                      {analysis}
+                    </p>
+                  </div>
                 )}
               </div>
             </div>
-
-            <h3 className="text-lg font-semibold text-amber-700 mb-3 flex items-center">
-              <span className="text-2xl mr-2">🏛️</span>
-              Cultural & Historical Context
-            </h3>
-
-            {contextLoading ? (
-              <div className="flex items-center justify-center py-8">
-                <svg
-                  className="animate-spin h-8 w-8 text-blue-600"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  />
-                </svg>
-                <p className="text-gray-500 italic ml-3">
-                  Analyzing artwork...
-                </p>
-              </div>
-            ) : (
-              <div className="prose prose-sm max-w-none">
-                <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
-                  {analysis}
-                </p>
-              </div>
-            )}
-          </div>
-        )}
+          )}
+        </main>
       </div>
 
       <style jsx>{`
         @keyframes fadeIn {
           from {
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
@@ -301,10 +350,9 @@ export default function SearchPage() {
           }
         }
         .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
+          animation: fadeIn 0.5s ease-out;
         }
       `}</style>
     </div>
   );
-
 }
