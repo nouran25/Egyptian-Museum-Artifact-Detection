@@ -1,26 +1,47 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Disable static optimization entirely
-  output: 'standalone',
-  
+  // Relax ESLint during builds
   eslint: {
-    ignoreDuringBuilds: true,
+    // Don't fail builds on ESLint errors
+    ignoreDuringBuilds: false, // Keep false but we fixed the rules
   },
-  // Allow external images
+  
+  // TypeScript configuration
+  typescript: {
+    // Don't fail build on type errors during development
+    // Set to false for production
+    ignoreBuildErrors: false,
+  },
+  
+  // Image configuration
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.metmuseum.org',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'collectionapi.metmuseum.org',
+        pathname: '/**',
       },
     ],
+    // Allow unoptimized images for external sources
     unoptimized: true,
   },
 
-  // Webpack config
+  // Output configuration for deployment
+  // output: 'standalone',
+  
+  // Increase timeout for static page generation
+  staticPageGenerationTimeout: 180,
+  
+  // Webpack configuration
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
+        ...config.resolve.fallback,
         fs: false,
         net: false,
         tls: false,
@@ -28,17 +49,6 @@ const nextConfig = {
     }
     return config;
   },
-
-  // Increase timeout
-  staticPageGenerationTimeout: 180,
-  
-  // Experimental features
-  experimental: {
-    serverActions: {
-      bodySizeLimit: '10mb',
-    },
-  },
 };
 
 module.exports = nextConfig;
-
