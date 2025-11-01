@@ -22,7 +22,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "*"
+        "https://egyptian-museum-artifact-detection.vercel.app"
     ],  # In production, replace with specific origins like ["http://localhost:3000"]
     allow_credentials=True,
     allow_methods=["*"],
