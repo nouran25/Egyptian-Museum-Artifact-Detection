@@ -72,12 +72,12 @@ export async function POST(req: Request) {
             {
               type: "text",
               text: `You are an expert art historian and museum curator.
-Analyze the artwork in the attached image. Write 3–4 rich, engaging paragraphs.
+Analyze the artwork in the attached image. Write 3 to 4 rich, engaging paragraphs.
 
 Include:
-• Historical Context – when and where was it made?
-• Cultural Significance – what beliefs or stories does it represent?
-• Artistic Style – materials, techniques, and symbolism.
+• Historical Context, when and where was it made?
+• Cultural Significance, what beliefs or stories does it represent?
+• Artistic Style, materials, techniques, and symbolism.
 
 ${contextInfo ? `Metadata: ${contextInfo}` : ""}
 Be factual, insightful, and accessible to museum visitors.`,
@@ -93,10 +93,10 @@ Be factual, insightful, and accessible to museum visitors.`,
 Analyze the artifact titled "${title}".`;
 
       prompt += `
-Write 3–4 short paragraphs covering:
-• Historical Context – When and where it was created
-• Cultural Significance – What it reveals about beliefs and society
-• Artistic Features – Its materials, form, and symbolism`;
+Write 3 to 4 short paragraphs covering:
+• Historical Context, When and where it was created
+• Cultural Significance, What it reveals about beliefs and society
+• Artistic Features, Its materials, form, and symbolism`;
 
       if (metadataParts.length > 0) {
         prompt += `\n\nContext: ${metadataParts.join(", ")}.`;
