@@ -64,9 +64,20 @@ export default function ScanPage() {
         throw new Error(errorData.error || "Detection failed");
       }
 
-      const data = await res.json();
-      if (!data.success) throw new Error(data.error || "Detection failed");
-      setResult(data);
+        const data = await res.json();
+
+        // The backend doesn't send "success", so consider 200 OK as success
+        if (data.error) {
+          throw new Error(data.error);
+        }
+
+        // Adapt backend JSON to the frontend result structure
+        setResult({
+          artifact_id: data.artifact_id,
+          confidence: data.confidence,
+          success: true,
+        });
+
     } catch (err: any) {
       console.error("Detection error:", err);
       setError(err.message || "Failed to detect artifact. Please try again.");
