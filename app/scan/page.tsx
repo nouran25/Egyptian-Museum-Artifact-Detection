@@ -54,7 +54,7 @@ export default function ScanPage() {
     formData.append("file", file);
 
     try {
-      const res = await fetch("/api/detect", {
+      const res = await fetch("https://artifact-backend-production.up.railway.app/detect-artifact", {
         method: "POST",
         body: formData,
       });
