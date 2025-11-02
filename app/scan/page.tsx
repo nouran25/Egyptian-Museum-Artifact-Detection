@@ -75,6 +75,8 @@ export default function ScanPage() {
         setResult({
           artifact_id: data.artifact_id,
           confidence: data.confidence,
+          artwork: data.artwork,
+          analysis: data.analysis,
           success: true,
         });
 
