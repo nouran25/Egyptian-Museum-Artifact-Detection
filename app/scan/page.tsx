@@ -79,7 +79,7 @@ export default function ScanPage() {
         });
 
       try {
-        const analyzeRes = await fetch("/api/analyze", {
+        const analyzeRes = await fetch("/api/analyse", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
