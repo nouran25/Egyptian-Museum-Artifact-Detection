@@ -73,7 +73,10 @@
 
 ### Live Demo
 
-📹 **![Watch Video Demonstration](./assets/demo.gif)**
+
+🌐 **[Try the Live Application](https://egyptian-museum-artifact-detection.vercel.app/)**
+
+**![Watch Video Demonstration](./assets/demo.gif)**
 
 ---
 
