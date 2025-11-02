@@ -75,11 +75,32 @@ export default function ScanPage() {
         setResult({
           artifact_id: data.artifact_id,
           confidence: data.confidence,
-          artwork: data.artwork,
-          analysis: data.analysis,
           success: true,
         });
 
+      try {
+        const analyzeRes = await fetch("/api/analyze", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            detectedArtifact: data.artifact_id,
+            artwork: { title: data.artifact_id },
+          }),
+        });
+
+        const analyzeData = await analyzeRes.json();
+
+        if (analyzeData.success) {
+          setResult((prev) => ({
+            ...prev!,
+            analysis: analyzeData.data,
+          }));
+        } else {
+          console.error("AI analysis failed:", analyzeData.error);
+        }
+      } catch (err) {
+        console.error("Failed to fetch AI analysis:", err);
+      }
     } catch (err: any) {
       console.error("Detection error:", err);
       setError(err.message || "Failed to detect artifact. Please try again.");
